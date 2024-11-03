@@ -1,5 +1,7 @@
 package com.example.aluvery
 
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,41 +14,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.aluvery.ui.theme.AluveryTheme
-//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110170")
+
+//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110172")
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AluveryTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
+                Surface {
+                    MyFirstComposable()
                 }
             }
         }
     }
 }
 
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MyFirstComposable() {
+    Text(text = "Meu primeiro Text")
+    Text(text = "Meu segundo Text")
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(
+    name = "Preview DarkMode",
+    showSystemUi = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
+@Preview(
+    name = "Preview LightMode",
+    showSystemUi = true,
+)
 @Composable
-fun GreetingPreview() {
+fun MyFirstComposablePreview() {
     AluveryTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color.White
-        ) {
-            Greeting("Jeremias")
+        Surface(modifier = Modifier.fillMaxSize()) {
+            MyFirstComposable()
         }
     }
 }
