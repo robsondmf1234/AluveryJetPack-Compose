@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.aluvery.ui.theme.AluveryTheme
 
-//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110174")
+//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110176")
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
