@@ -5,9 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -34,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.ui.theme.AluveryTheme
 
-//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110176")
+//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110178")
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,14 +81,14 @@ fun ProductItem() {
                 Image(
                     modifier = Modifier
                         .size(imageSize)
-                        .offset(y = imageSize/2)
+                        .offset(y = imageSize / 2)
                         .clip(shape = CircleShape)
                         .align(Alignment.BottomCenter),
                     painter = painterResource(R.drawable.ic_launcher_background),
                     contentDescription = null
                 )
             }
-            Spacer(modifier = Modifier.height(imageSize/2))
+            Spacer(modifier = Modifier.height(imageSize / 2))
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = LoremIpsum(50).values.first(),
