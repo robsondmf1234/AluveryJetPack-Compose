@@ -1,8 +1,5 @@
-package com.example.aluvery
+package com.example.aluvery.ui.components
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -21,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,55 +34,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.aluvery.ui.theme.AluveryTheme
-
-//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110181")
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            AluveryTheme {
-                Surface {
-                    productsSectionPreview()
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun ProductsSection() {
-    Column {
-        Text(
-            modifier = Modifier
-                .padding(
-                    start = 16.dp,
-                    top = 16.dp,
-                    end = 16.dp
-                ),
-            text = "Promoções",
-            fontSize = 20.sp,
-            fontWeight = FontWeight(400)
-        )
-        Row(
-            modifier = Modifier
-                .padding(bottom = 16.dp, top = 8.dp)
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Spacer(Modifier)
-            ProductItem()
-            ProductItem()
-            ProductItem()
-            Spacer(Modifier)
-        }
-    }
-}
+import com.example.aluvery.R
 
 
 @Composable
-fun ProductItem() {
+fun ProductItemChallenge() {
     Surface(
         shape = RoundedCornerShape(15.dp), shadowElevation = 8.dp
     ) {
@@ -92,6 +46,7 @@ fun ProductItem() {
             modifier = Modifier
                 .heightIn(250.dp, 300.dp)
                 .width(200.dp)
+                .verticalScroll(rememberScrollState())
         ) {
             val imageSize = 100.dp
             Box(
@@ -130,24 +85,59 @@ fun ProductItem() {
                     fontWeight = FontWeight(400)
                 )
             }
+            Spacer(modifier = Modifier.height(60.dp))
+            Box(
+                modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .background(color = Color(0xFF0000CD))
+            ) {
+                Text(
+                    text = LoremIpsum(50).values.first(),
+                    fontSize = 20.sp,
+                    color = Color(0xFFFFFFFF),
+                    fontWeight = FontWeight(400),
+                    modifier = Modifier.padding(
+                        start = 16.dp,
+                        top = 8.dp,
+                        bottom = 16.dp,
+                        end = 16.dp
+                    )
+                )
+            }
         }
     }
 }
 
-
 @Preview(
     showBackground = true, showSystemUi = true
 )
 @Composable
-private fun ProductItemPreview() {
-    ProductItem()
+fun ProductsSectionChallengePreview() {
+    Column {
+        Text(
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    top = 16.dp,
+                    end = 16.dp
+                ),
+            text = "Promoções Desafio",
+            fontSize = 20.sp,
+            fontWeight = FontWeight(400)
+        )
+        Row(
+            modifier = Modifier
+                .padding(bottom = 16.dp, top = 8.dp)
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Spacer(Modifier)
+            ProductItemChallenge()
+            ProductItemChallenge()
+            ProductItemChallenge()
+            Spacer(Modifier)
+        }
+    }
 }
-
-@Preview(
-    showBackground = true, showSystemUi = true
-)
-@Composable
-fun productsSectionPreview() {
-    ProductsSection()
-}
-
