@@ -33,10 +33,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aluvery.extensions.toBrazilianCurrency
+import com.example.aluvery.model.Product
 import com.example.aluvery.ui.theme.AluveryTheme
+import java.math.BigDecimal
 
 //TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110181")
 class MainActivity : ComponentActivity() {
@@ -74,9 +76,27 @@ fun ProductsSection() {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Spacer(Modifier)
-            ProductItem()
-            ProductItem()
-            ProductItem()
+            ProductItem(
+                Product(
+                    name = "Hamburguer",
+                    price = BigDecimal("17.99"),
+                    R.drawable.burger
+                )
+            )
+            ProductItem(
+                Product(
+                    name = "Fritas",
+                    price = BigDecimal("20.99"),
+                    image = R.drawable.fries
+                )
+            )
+            ProductItem(
+                Product(
+                    name = "Pizza",
+                    price = BigDecimal("30.99"),
+                    image = R.drawable.pizza
+                )
+            )
             Spacer(Modifier)
         }
     }
@@ -84,7 +104,7 @@ fun ProductsSection() {
 
 
 @Composable
-fun ProductItem() {
+fun ProductItem(product: Product) {
     Surface(
         shape = RoundedCornerShape(15.dp), shadowElevation = 8.dp
     ) {
@@ -111,21 +131,22 @@ fun ProductItem() {
                         .offset(y = imageSize / 2)
                         .clip(shape = CircleShape)
                         .align(Alignment.BottomCenter),
-                    painter = painterResource(R.drawable.ic_launcher_background),
-                    contentDescription = null
+                    painter = painterResource(product.image),
+                    contentDescription = null,
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop
                 )
             }
             Spacer(modifier = Modifier.height(imageSize / 2))
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
-                    text = LoremIpsum(50).values.first(),
+                    text = product.name,
                     fontSize = 18.sp,
                     fontWeight = FontWeight(700),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "R$ 14,99",
+                    text = product.price.toBrazilianCurrency(),
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400)
                 )
@@ -140,7 +161,13 @@ fun ProductItem() {
 )
 @Composable
 private fun ProductItemPreview() {
-    ProductItem()
+    ProductItem(
+        Product(
+            name = "Produto 1",
+            price = BigDecimal("10,00"),
+            R.drawable.ic_launcher_foreground
+        )
+    )
 }
 
 @Preview(
