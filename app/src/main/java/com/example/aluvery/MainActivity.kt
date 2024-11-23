@@ -9,7 +9,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.aluvery.ui.screens.HomeScreen
 import com.example.aluvery.ui.theme.AluveryTheme
 
-//TODO("https://cursos.alura.com.br/course/jetpack-compose-app-android/task/110181")
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
