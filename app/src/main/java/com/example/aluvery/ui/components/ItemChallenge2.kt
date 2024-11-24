@@ -32,22 +32,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.R
 
+// Função composable para exibir um item de desafio
 @Composable
 @Preview(
     showBackground = true, showSystemUi = true,
 )
 fun ItemChallenge() {
+    // Surface é um contêiner que aplica elevação e forma arredondada
     Surface(
         modifier = Modifier.padding(16.dp),
         shape = RoundedCornerShape(12.dp),
         shadowElevation = 8.dp
     ) {
-
+        // Row é um contêiner que organiza seus filhos em uma linha horizontal
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(150.dp)
         ) {
+            // Box é um contêiner que empilha seus filhos
             Box(
                 modifier = Modifier
                     .width(100.dp)
@@ -58,6 +61,7 @@ fun ItemChallenge() {
                         )
                     )
             ) {
+                // Image exibe uma imagem com borda e forma circular
                 Image(
                     modifier = Modifier
                         .size(90.dp)
@@ -75,7 +79,9 @@ fun ItemChallenge() {
                     contentDescription = null
                 )
             }
+            // Spacer adiciona um espaço horizontal entre os elementos
             Spacer(modifier = Modifier.width(70.dp))
+            // Text exibe um texto com estilo e overflow
             Text(
                 modifier = Modifier.padding(top = 16.dp, bottom = 16.dp, end = 24.dp),
                 maxLines = 6,

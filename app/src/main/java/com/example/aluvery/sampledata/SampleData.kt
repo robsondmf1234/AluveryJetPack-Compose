@@ -4,12 +4,12 @@ import com.example.aluvery.R
 import com.example.aluvery.model.Product
 import java.math.BigDecimal
 
-
+// Lista de produtos de exemplo
 val sampleProducts = listOf(
     Product(
-        name = "Hamburguer",
-        price = BigDecimal("10.99"),
-        image = R.drawable.burger
+        name = "Hamburguer", // Nome do produto
+        price = BigDecimal("10.99"), // Preço do produto
+        image = R.drawable.burger // Imagem do produto
     ),
     Product(
         name = "Fritas",
@@ -23,6 +23,7 @@ val sampleProducts = listOf(
     )
 )
 
+// Lista de produtos mais vendidos de exemplo
 val sampleProductsTopSeller = listOf(
     Product(
         name = "Hamburguer",

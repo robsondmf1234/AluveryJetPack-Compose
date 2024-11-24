@@ -1,4 +1,4 @@
-package com.example.aluvery.oldcomponents
+package com.example.aluvery.samplecomponents
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
@@ -18,12 +18,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.aluvery.ui.theme.AluveryTheme
 
+// Função composable que exibe dois textos
 @Composable
 fun MyFirstComposable() {
     Text(text = "Meu primeiro Text")
     Text(text = "Meu segundo Text")
 }
 
+// Função composable para pré-visualizar uma coluna com dois textos
 @Preview(
     showBackground = true
 )
@@ -35,6 +37,7 @@ fun ColumnPreview() {
     }
 }
 
+// Função composable para pré-visualizar uma linha com dois textos
 @Preview(
     showBackground = true
 )
@@ -46,6 +49,7 @@ fun RowPreview() {
     }
 }
 
+// Função composable para pré-visualizar uma caixa com dois textos
 @Preview(
     showBackground = true,
 )
@@ -57,6 +61,7 @@ fun BoxPreview() {
     }
 }
 
+// Função composable para pré-visualizar um layout personalizado com várias composições
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CustomLayoutPreview() {
@@ -66,15 +71,16 @@ fun CustomLayoutPreview() {
             .background(color = Color.Blue)
             .padding(all = 8.dp)
             .fillMaxWidth()
-            .fillMaxHeight( )
+            .fillMaxHeight()
     ) {
         Text(text = "Texto 1")
         Text(text = "Texto 2")
         Row(
             Modifier
-            .padding(8.dp)
-            .background(color = Color.Red)
-            .padding(all = 8.dp)) {
+                .padding(8.dp)
+                .background(color = Color.Red)
+                .padding(all = 8.dp)
+        ) {
             Text(text = "Texto 3")
             Text(text = "Texto 4")
         }
@@ -91,7 +97,7 @@ fun CustomLayoutPreview() {
     }
 }
 
-
+// Função composable para pré-visualizar MyFirstComposable em modo claro e escuro
 @Preview(
     name = "Preview DarkMode",
     showSystemUi = true,

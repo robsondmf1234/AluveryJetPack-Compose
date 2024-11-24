@@ -19,9 +19,11 @@ import com.example.aluvery.model.Product
 import com.example.aluvery.sampledata.sampleProducts
 import com.example.aluvery.sampledata.sampleProductsTopSeller
 
+// Função composable para exibir uma seção de produtos com um título e uma lista de produtos
 @Composable
 fun ProductsSection(title: String, products: List<Product>) {
     Column {
+        // Exibe o título da seção
         Text(
             modifier = Modifier
                 .padding(
@@ -32,6 +34,7 @@ fun ProductsSection(title: String, products: List<Product>) {
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
+        // Exibe uma linha horizontal de produtos que pode ser rolada
         Row(
             modifier = Modifier
                 .padding(
@@ -41,16 +44,19 @@ fun ProductsSection(title: String, products: List<Product>) {
                 .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Adiciona um espaço no início da linha
             Spacer(Modifier)
+            // Itera sobre a lista de produtos e exibe cada um usando a função ProductItem
             for (p in products) {
                 ProductItem(p)
             }
+            // Adiciona um espaço no final da linha
             Spacer(Modifier)
         }
     }
 }
 
-
+// Função composable para pré-visualizar a seção de produtos com diferentes listas de produtos
 @Preview(
     showBackground = true, showSystemUi = true
 )
@@ -60,4 +66,3 @@ fun ProductsSectionPreview() {
     ProductsSection(title = "Mais Pedidos", products = sampleProductsTopSeller)
     ProductsSection(title = "Novos Produtos", products = sampleProducts)
 }
-

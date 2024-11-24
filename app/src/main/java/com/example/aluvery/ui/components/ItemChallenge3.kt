@@ -36,12 +36,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.R
 
-
+// Função composable para exibir um item de produto de desafio
 @Composable
 fun ProductItemChallenge() {
+    // Surface é um contêiner que aplica elevação e forma arredondada
     Surface(
         shape = RoundedCornerShape(15.dp), shadowElevation = 8.dp
     ) {
+        // Column é um contêiner que organiza seus filhos em uma coluna vertical
         Column(
             modifier = Modifier
                 .heightIn(250.dp, 300.dp)
@@ -49,6 +51,7 @@ fun ProductItemChallenge() {
                 .verticalScroll(rememberScrollState())
         ) {
             val imageSize = 100.dp
+            // Box é um contêiner que empilha seus filhos
             Box(
                 modifier = Modifier
                     .height(imageSize)
@@ -60,6 +63,7 @@ fun ProductItemChallenge() {
                             )
                     )
             ) {
+                // Image exibe uma imagem com borda e forma circular
                 Image(
                     modifier = Modifier
                         .size(imageSize)
@@ -70,8 +74,11 @@ fun ProductItemChallenge() {
                     contentDescription = null
                 )
             }
+            // Spacer adiciona um espaço vertical entre os elementos
             Spacer(modifier = Modifier.height(imageSize / 2))
+            // Column para organizar textos dentro do item de produto
             Column(modifier = Modifier.padding(8.dp)) {
+                // Text exibe um texto com estilo e overflow
                 Text(
                     text = LoremIpsum(50).values.first(),
                     fontSize = 18.sp,
@@ -79,19 +86,23 @@ fun ProductItemChallenge() {
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
+                // Text exibe o preço do produto
                 Text(
                     text = "R$ 14,99",
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400)
                 )
             }
+            // Spacer adiciona um espaço vertical entre os elementos
             Spacer(modifier = Modifier.height(60.dp))
+            // Box para exibir um texto com fundo colorido
             Box(
                 modifier =
                 Modifier
                     .fillMaxWidth()
                     .background(color = Color(0xFF0000CD))
             ) {
+                // Text exibe um texto com estilo e cor branca
                 Text(
                     text = LoremIpsum(50).values.first(),
                     fontSize = 20.sp,
@@ -109,12 +120,15 @@ fun ProductItemChallenge() {
     }
 }
 
+// Função composable para pré-visualizar a seção de produtos de desafio
 @Preview(
     showBackground = true, showSystemUi = true
 )
 @Composable
 fun ProductsSectionChallengePreview() {
+    // Column é um contêiner que organiza seus filhos em uma coluna vertical
     Column {
+        // Text exibe o título da seção
         Text(
             modifier = Modifier
                 .padding(
@@ -126,6 +140,7 @@ fun ProductsSectionChallengePreview() {
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
+        // Row é um contêiner que organiza seus filhos em uma linha horizontal
         Row(
             modifier = Modifier
                 .padding(bottom = 16.dp, top = 8.dp)
@@ -133,10 +148,13 @@ fun ProductsSectionChallengePreview() {
                 .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            // Spacer adiciona um espaço horizontal entre os elementos
             Spacer(Modifier)
+            // Exibe três itens de produto de desafio
             ProductItemChallenge()
             ProductItemChallenge()
             ProductItemChallenge()
+            // Spacer adiciona um espaço horizontal entre os elementos
             Spacer(Modifier)
         }
     }

@@ -36,6 +36,7 @@ import java.math.BigDecimal
 @Composable
 fun ProductItem(product: Product) {
     Surface(
+        modifier = Modifier.padding(8.dp),
         shape = RoundedCornerShape(15.dp), shadowElevation = 8.dp
     ) {
         Column(
